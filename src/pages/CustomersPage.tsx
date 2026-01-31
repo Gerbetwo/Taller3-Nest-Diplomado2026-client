@@ -32,64 +32,66 @@ export default function CustomersPage() {
         );
     }, [rows, deferredQ]);
     return (
-        <div className="min-h-screen bg-slate-50">
-            <header className="border-b bg-white">
-                <div className="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
-                    <h1 className="text-xl font-semibold">MiniPOS — Customers</h1>
-                    <span className="text-sm text-slate-500">Backend: /customers</span>
-                </div>
-            </header>
-            <main className="mx-auto max-w-5xl px-4 py-6 space-y-4">
-                <div className="rounded-xl border bg-white p-4">
-                    <label className="block text-sm font-medium mb-2">Buscar</label>
-                    <input
-                        value={q}
-                        onChange={(e) => setQ(e.target.value)}
-                        placeholder="Nombre, email o teléfono…"
-                        className="w-full rounded-lg border bg-white px-3 py-2"
-                    />
-                    <p className="mt-2 text-xs text-slate-500">
-                        Debounce + Deferred: reduce recalculos y mejora fluidez.
-                    </p>
-                </div>
-                <div className="rounded-xl border bg-white">
-                    <div className="p-4 border-b">
-                        {loading && <p className="text-sm text-slate-600">Cargando…</p>}
-                        {err && <p className="text-sm text-red-600">Error: {err}</p>}
-                        {!loading && !err && (
-                            <p className="text-sm text-slate-600">{filtered.length} registro(s)</p>
-                        )}
+        <body className="bg-slate-900">
+            <div className="min-h-screen">
+                <header className="border-b text-sky-400 ">
+                    <div className="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
+                        <h1 className="text-xl font-semibold text-sky-400">MiniPOS — Customers</h1>
                     </div>
-                    <div className="overflow-x-auto">
-                        <table className="w-full text-sm">
-                            <thead className="bg-slate-50 text-left">
-                                <tr>
-                                    <th className="p-3">Nombre</th>
-                                    <th className="p-3">Email</th>
-                                    <th className="p-3">Teléfono</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {filtered.map((c) => (
-                                    <tr key={c.id} className="border-t">
-                                        <td className="p-3">{c.fullName}</td>
-                                        <td className="p-3">{c.email}</td>
-                                        <td className="p-3">{c.phone ?? "-"}</td>
-                                    </tr>
-                                ))}
-                                {!loading && !err && filtered.length === 0 && (
+                    <span className="text-sm text-sky-400">Backend: /customers</span>
+                </header>
+                <main className="mx-auto max-w-5xl px-4 py-6 space-y-4 text-indigo-400 bg-slate-900">
+                    <div className="rounded-xl border">
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-sm">
+                                <thead className="text-center">
                                     <tr>
-                                        <td className="p-6 text-center text-slate-500" colSpan={3}>
-                                            No hay datos. Crea algunos con Postman (POST
-                                            /customers).
-                                        </td>
+                                        <th className="p-4 text-sky-500">Nombre</th>
+                                        <th className="p-4 text-sky-500">Email</th>
+                                        <th className="p-4 text-sky-500">Teléfono</th>
                                     </tr>
-                                )}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {filtered.map((c) => (
+                                        <tr key={c.id} className="border-t">
+                                            <td className="p-3 text-white">{c.fullName}</td>
+                                            <td className="p-3 text-white">{c.email}</td>
+                                            <td className="p-3 text-white">{c.phone ?? "-"}</td>
+                                        </tr>
+                                    ))}
+                                    {!loading && !err && filtered.length === 0 && (
+                                        <tr>
+                                            <td className="p-6 text-center text-sky-500" colSpan={3}>
+                                                No hay datos. Crea algunos con Postman (POST
+                                                /customers).
+                                            </td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-            </main>
-        </div>
+                    <div>
+                        <div className="p-4 border-b text-sky-400 ">
+                            {loading && <p className="text-sm text-slate-600">Cargando…</p>}
+                            {err && <p className="text-sm text-red-600">Error: {err}</p>}
+                            {!loading && !err && (
+                                <p className="text-sm">{filtered.length} registro(s)</p>
+                            )}
+                        </div>
+                        <label className="p-2 block text-sm font-medium mb-2">Buscar</label>
+                        <input
+                            value={q}
+                            onChange={(e) => setQ(e.target.value)}
+                            placeholder="Nombre, email o teléfono…"
+                            className="w-full rounded-lg border-indigo-500 placeholder-gray-500 border px-3 py-2"
+                        />
+                        <p className="mt-2 text-xs text-indigos-400">
+                            Debounce + Deferred: reduce recalculos y mejora fluidez.
+                        </p>
+                    </div>
+                </main>
+            </div>
+        </body>
     );
 }
