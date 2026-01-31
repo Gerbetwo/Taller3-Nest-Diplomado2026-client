@@ -6,7 +6,11 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
-  return <><h1>¡Hola Mundo! Cruel</h1></>
+  return <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+      <h1 className="text-4xl font-bold text-sky-400 drop-shadow-lg">
+        ¡Tailwind funcionando!
+      </h1>
+    </div>
 
   // return (
   //   <>
