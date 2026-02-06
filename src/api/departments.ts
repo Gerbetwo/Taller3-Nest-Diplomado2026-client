@@ -1,15 +1,10 @@
 import { http } from "./http";
 export type Departments = {
     id: number;
-    fullName: string;
-    email: string;
-    phone?: string | null;
-    createdAt?: string;
+    name: string;
 };
 export type CreateDepartmentsDto = {
-    fullName: string;
-    email: string;
-    phone?: string;
+    name: string;
 };
 export type UpdateDepartmentsDto = Partial<CreateDepartmentsDto>;
 export const departmentsApi = {

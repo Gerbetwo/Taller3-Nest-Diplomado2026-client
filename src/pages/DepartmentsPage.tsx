@@ -4,13 +4,11 @@ export default function DeparmentsPage() {
     const { data = [], isLoading, isError, error, refetch } = useDepartments();
     const createMut = useCreateDepartments();
     const deleteMut = useDeleteDepartments();
-    const [fullName, setFullName] = useState("");
-    const [email, setEmail] = useState("");
+    const [name, setFullName] = useState("");
     async function onCreate(e: React.FormEvent) {
         e.preventDefault();
-        await createMut.mutateAsync({ fullName, email });
+        await createMut.mutateAsync({ name });
         setFullName("");
-        setEmail("");
     }
     return (
         <div className="justify-center bg-slate-950 text-slate-200 antialiased">
@@ -40,7 +38,7 @@ export default function DeparmentsPage() {
                             <input
                                 className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all placeholder:text-slate-600"
                                 placeholder="Ej. Juan Pérez"
-                                value={fullName}
+                                value={name}
                                 onChange={(e) => setFullName(e.target.value)}
                                 required
                             />
@@ -87,8 +85,7 @@ export default function DeparmentsPage() {
                             <tbody className="divide-y divide-slate-800">
                                 {data?.map((c) => (
                                     <tr key={c.id} className="group hover:bg-slate-800/40 transition-colors">
-                                        <td className="px-6 py-4 text-sm font-medium text-white">{c.fullName}</td>
-                                        <td className="px-6 py-4 text-sm text-slate-400">{c.email}</td>
+                                        <td className="px-6 py-4 text-sm font-medium text-white">{c.name}</td>
                                         <td className="px-6 py-4 text-center">
                                             <button
                                                 className="text-xs font-bold text-red-400 hover:text-red-300 hover:bg-red-400/10 px-3 py-1.5 rounded-md transition-all disabled:opacity-30"

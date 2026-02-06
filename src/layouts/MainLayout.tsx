@@ -7,9 +7,9 @@ export default function MainLayout({
     content: React.ReactNode;
 }) {
     return (
-        <div className="min-h-screen flex bg-gray-100">
+        <div className="min-h-screen flex bg-slate-900">
             {/* Sidebar */}
-            <aside className="w-64 bg-white border-r p-4">
+            <aside className="w-64 bg-slate-900 border-r p-4">
                 {sidebar}
             </aside>
             {/* Main Content */}
