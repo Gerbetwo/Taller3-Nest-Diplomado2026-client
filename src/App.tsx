@@ -1,14 +1,30 @@
 //  import { useState } from 'react'
 //  import reactLogo from './assets/react.svg'
 //  import viteLogo from '/vite.svg'
+import { useState } from 'react';
 import './App.css'
+import SidebarMenu from './components/SideBarMenu';
+import MainLayout from './layouts/MainLayout';
 import CustomersPage from "./pages/CustomersPage";
 import DeparmentsPage from './pages/DepartmentsPage';
 
 function App() {
+  const [page, setPage] = useState("customers");
+  function renderContent() {
+    switch (page) {
+      case "customers":
+        return <CustomersPage />;
+      case "departments":
+        return <DeparmentsPage />;
+      default:
+        return <CustomersPage />;
+    }
+  }
   return (
-  
-    <><CustomersPage /><DeparmentsPage /></>
+    <MainLayout
+      sidebar={<SidebarMenu current={page} onChange={setPage} />
+      }
+      content={renderContent()} />
   )
 
 
