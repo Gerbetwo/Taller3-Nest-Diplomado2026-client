@@ -13,12 +13,12 @@ export type CreateDepartmentsDto = {
 };
 export type UpdateDepartmentsDto = Partial<CreateDepartmentsDto>;
 export const departmentsApi = {
-    list: () => http<Departments[]>("/departments"),
+    list: () => http<Departments[]>("/departaments"),
     create: (dto: CreateDepartmentsDto) =>
-        http<Departments>("/departments", { method: "POST", body: JSON.stringify(dto) }),
+        http<Departments>("/departaments", { method: "POST", body: JSON.stringify(dto) }),
     update: (id: number, dto: UpdateDepartmentsDto) =>
-        http<Departments>(`/departments/${id}`, {
+        http<Departments>(`/departaments/${id}`, {
             method: "PATCH", body: JSON.stringify(dto)
         }),
-    remove: (id: number) => http<void>(`/departments/${id}`, { method: "DELETE" }),
+    remove: (id: number) => http<void>(`/departaments/${id}`, { method: "DELETE" }),
 };

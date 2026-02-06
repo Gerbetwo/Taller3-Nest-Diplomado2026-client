@@ -3,9 +3,14 @@
 //  import viteLogo from '/vite.svg'
 import './App.css'
 import CustomersPage from "./pages/CustomersPage";
+import DeparmentsPage from './pages/DepartmentsPage';
 
 function App() {
-  return (<CustomersPage />)
+  return (
+  
+    <><CustomersPage /><DeparmentsPage /></>
+  )
+
 
   // return (
   //   <body className="min-h-screen bg-slate-900 flex items-center justify-center">

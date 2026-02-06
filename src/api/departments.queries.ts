@@ -3,13 +3,13 @@ import { departmentsApi, type CreateDepartmentsDto, type UpdateDepartmentsDto } 
 const keys = {
     all: ["departments"] as const,
 };
-export function usedepartments() {
+export function useDepartments() {
     return useQuery({
         queryKey: keys.all,
         queryFn: departmentsApi.list,
     });
 }
-export function useCreateDeparments() {
+export function useCreateDepartments() {
     const qc = useQueryClient();
     return useMutation({
         mutationFn: (dto: CreateDepartmentsDto) => departmentsApi.create(dto),
@@ -24,7 +24,7 @@ export function useUpdateDeparments() {
         onSuccess: () => qc.invalidateQueries({ queryKey: keys.all }),
     });
 }
-export function useDeleteDeparments() {
+export function useDeleteDepartments() {
     const qc = useQueryClient();
     return useMutation({
         mutationFn: (id: number) => departmentsApi.remove(id),
