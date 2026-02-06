@@ -1,33 +1,33 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { customersApi, type CreateCustomerDto, type UpdateCustomerDto } from "./customers";
+import { departmentsApi, type CreateDepartmentsDto, type UpdateDepartmentsDto } from "./departments";
 const keys = {
-    all: ["customers"] as const,
+    all: ["departments"] as const,
 };
-export function useCustomers() {
+export function usedepartments() {
     return useQuery({
         queryKey: keys.all,
-        queryFn: customersApi.list,
+        queryFn: departmentsApi.list,
     });
 }
-export function useCreateCustomer() {
+export function useCreateDeparments() {
     const qc = useQueryClient();
     return useMutation({
-        mutationFn: (dto: CreateCustomerDto) => customersApi.create(dto),
+        mutationFn: (dto: CreateDepartmentsDto) => departmentsApi.create(dto),
         onSuccess: () => qc.invalidateQueries({ queryKey: keys.all }),
     });
 }
-export function useUpdateCustomer() {
+export function useUpdateDeparments() {
     const qc = useQueryClient();
     return useMutation({
-        mutationFn: ({ id, dto }: { id: number; dto: UpdateCustomerDto }) =>
-            customersApi.update(id, dto),
+        mutationFn: ({ id, dto }: { id: number; dto: UpdateDepartmentsDto }) =>
+            departmentsApi.update(id, dto),
         onSuccess: () => qc.invalidateQueries({ queryKey: keys.all }),
     });
 }
-export function useDeleteCustomer() {
+export function useDeleteDeparments() {
     const qc = useQueryClient();
     return useMutation({
-        mutationFn: (id: number) => customersApi.remove(id),
+        mutationFn: (id: number) => departmentsApi.remove(id),
         onSuccess: () => qc.invalidateQueries({ queryKey: keys.all }),
     });
 }
