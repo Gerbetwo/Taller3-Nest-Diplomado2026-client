@@ -27,7 +27,6 @@ function App() {
       content={renderContent()} />
   )
 
-
   // return (
   //   <body className="min-h-screen bg-slate-900 flex items-center justify-center">
   //     <script src="https://cdn.tailwindcss.com"></script>

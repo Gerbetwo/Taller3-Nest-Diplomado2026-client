@@ -14,7 +14,7 @@ export default function DeparmentsPage() {
         <div className="justify-center bg-slate-950 text-slate-200 antialiased">
             <header className="border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-10">
                 <div className="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
-                    <h1 className="text-xl font-bold tracking-tight text-white">deparments</h1>
+                    <h1 className="text-xl font-bold tracking-tight text-white">Departamentos</h1>
                     <button
                         className="rounded-lg border border-slate-700 bg-slate-800 px-4 py-2 text-sm font-medium hover:bg-slate-700 hover:text-white transition-colors"
                         onClick={() => refetch()}
@@ -28,7 +28,7 @@ export default function DeparmentsPage() {
                 {/* Formulario de Creación */}
                 <form onSubmit={onCreate} className="rounded-xl border border-slate-800 bg-slate-900 p-6 shadow-xl space-y-4">
                     <div className="border-b border-slate-800 pb-2">
-                        <h2 className="text-sm font-semibold text-indigo-400 uppercase tracking-wider">Nuevo Cliente</h2>
+                        <h2 className="text-sm font-semibold text-indigo-400 uppercase tracking-wider">Nuevo Departamento</h2>
                         <p className="text-xs text-slate-500 mt-1">Crea un registro y actualiza la caché automáticamente.</p>
                     </div>
 
@@ -37,7 +37,7 @@ export default function DeparmentsPage() {
                             <label className="block text-xs font-medium text-slate-400 mb-1.5 ml-1">Nombre Completo</label>
                             <input
                                 className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all placeholder:text-slate-600"
-                                placeholder="Ej. Juan Pérez"
+                                placeholder="Ej. Ingenieria"
                                 value={name}
                                 onChange={(e) => setFullName(e.target.value)}
                                 required
