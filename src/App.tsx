@@ -7,6 +7,7 @@ import SidebarMenu from './components/SideBarMenu';
 import MainLayout from './layouts/MainLayout';
 import CustomersPage from "./pages/CustomersPage";
 import DeparmentsPage from './pages/DepartmentsPage';
+import CoursesPage from './pages/CoursesPages';
 
 function App() {
   const [page, setPage] = useState("customers");
@@ -16,6 +17,8 @@ function App() {
         return <CustomersPage />;
       case "departments":
         return <DeparmentsPage />;
+      case "courses":
+        return <CoursesPage />;
       default:
         return <CustomersPage />;
     }
