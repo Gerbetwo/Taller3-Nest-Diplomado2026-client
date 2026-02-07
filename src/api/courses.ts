@@ -7,12 +7,12 @@ export type Course = {
     id: number;
     code: string;
     title: string;
-    departmentId: number;
+    departamentId: number;
 };
 export type CreateCourseDto = {
     code: string;
     title: string;
-    departmentId: number;
+    departamentId: number;
 };
 export type UpdateCourseDto = Partial<CreateCourseDto>;
 export const coursesApi = {

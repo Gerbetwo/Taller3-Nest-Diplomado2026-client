@@ -10,7 +10,7 @@ type EditingState = {
     id: number;
     code: string;
     title: string;
-    departmentId: number | "";
+    departamentId: number | "";
 };
 export default function CoursesPage() {
     const { data: courses = [], isLoading, isError, error } = useCourses();
@@ -20,7 +20,7 @@ export default function CoursesPage() {
     const deleteMut = useDeleteCourse();
     const [code, setCode] = useState("");
     const [title, setTitle] = useState("");
-    const [departmentId, setDepartmentId] = useState<number | "">("");
+    const [departamentId, setDepartamentId] = useState<number | "">("");
     const [editing, setEditing] = useState<EditingState | null>(null);
     const deptNameById = useMemo(() => {
         const map = new Map<number, string>();
@@ -30,22 +30,22 @@ export default function CoursesPage() {
     async function handleCreate(e: React.FormEvent) {
         e.preventDefault();
         // Validación mínima (además de required)
-        if (!departmentId) return;
+        if (!departamentId) return;
         await createMut.mutateAsync({
             code: code.trim(),
             title: title.trim(),
-            departmentId: Number(departmentId),
+            departamentId: Number(departamentId),
         });
         setCode("");
         setTitle("");
-        setDepartmentId("");
+        setDepartamentId("");
     }
     function startEdit(c: any) {
         setEditing({
             id: c.id,
             code: c.code,
             title: c.title,
-            departmentId: c.departmentId,
+            departamentId: c.departamentId,
         });
     }
     function cancelEdit() {
@@ -53,13 +53,13 @@ export default function CoursesPage() {
     }
     async function saveEdit() {
         if (!editing) return;
-        if (!editing.departmentId) return;
+        if (!editing.departamentId) return;
         await updateMut.mutateAsync({
             id: editing.id,
             dto: {
                 code: editing.code.trim(),
                 title: editing.title.trim(),
-                departmentId: Number(editing.departmentId),
+                departamentId: Number(editing.departamentId),
             },
         });
         setEditing(null);
@@ -97,8 +97,8 @@ export default function CoursesPage() {
                         <label className="block text-sm font-medium mb-1">Department</label>
                         <select
                             className="w-full rounded-lg border px-3 py-2"
-                            value={departmentId}
-                            onChange={(e) => setDepartmentId(Number(e.target.value))}
+                            value={departamentId}
+                            onChange={(e) => setDepartamentId(Number(e.target.value))}
                             required
                         >
                             <option value="">Select department</option>
@@ -143,8 +143,8 @@ export default function CoursesPage() {
                                 const isEditing = editing?.id === c.id;
                                 const deptLabel =
                                     c.department?.name ??
-                                    deptNameById.get(c.departmentId) ??
-                                    `#${c.departmentId}`;
+                                    deptNameById.get(c.departamentId) ??
+                                    `#${c.departamentId}`;
                                 return (
                                     <tr key={c.id} className="border-t">
                                         <td className="p-3">
@@ -181,12 +181,12 @@ export default function CoursesPage() {
                                             {isEditing ? (
                                                 <select
                                                     className="w-full rounded border px-2 py-1"
-                                                    value={editing!.departmentId}
+                                                    value={editing!.departamentId}
                                                     onChange={(e) =>
                                                         setEditing((prev) =>
                                                             prev
                                                                 ? {
-                                                                    ...prev, departmentId:
+                                                                    ...prev, departamentId:
                                                                         Number(e.target.value)
                                                                 }
                                                                 : prev
