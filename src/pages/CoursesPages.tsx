@@ -70,7 +70,7 @@ export default function CoursesPage() {
                 <h1 className="text-2xl font-bold">Courses</h1>
                 <span className="text-sm text-slate-500">/courses</span>
             </div>
-            <form onSubmit={handleCreate} className="rounded-xl border bg-white p-4 space-y-3">
+            <form onSubmit={handleCreate} className="rounded-xl border bg-slate-900 p-4 space-y-3">
                 <h2 className="font-semibold">Create Course</h2>
                 <div className="grid gap-3 md:grid-cols-3">
                     <div>
@@ -120,7 +120,7 @@ export default function CoursesPage() {
                     <p className="text-sm text-red-600">Create error: {String(createMut.error)}</p>
                 )}
             </form>
-            <div className="rounded-xl border bg-white overflow-hidden">
+            <div className="rounded-xl border bg-slate-900 overflow-hidden">
                 <div className="p-4 border-b">
                     {isLoading && <p className="text-sm text-slate-600">Loading courses…</p>}
                     {isError && <p className="text-sm text-red-600">Error: {String(error)}</p>}
@@ -130,7 +130,7 @@ export default function CoursesPage() {
                 </div>
                 <div className="overflow-x-auto">
                     <table className="w-full text-sm">
-                        <thead className="bg-slate-50 text-left">
+                        <thead className="bg-slate-900 text-left">
                             <tr>
                                 <th className="p-3">Code</th>
                                 <th className="p-3">Title</th>
@@ -227,8 +227,7 @@ export default function CoursesPage() {
                                                             Edit
                                                         </button>
                                                         <button
-                                                            className="rounded bg-red-600 px-3 py-1 text-white
-disabled:opacity-50"
+                                                            className="rounded bg-red-600 px-3 py-1 text-white disabled:opacity-50"
                                                             onClick={() => {
                                                                 if (!confirm("Delete this course?")) return;
                                                                 deleteMut.mutate(c.id);
